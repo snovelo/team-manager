@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Agent {
+  id                 String   @id @default(cuid())
+  name               String
+  currentShift       String?
+  productionDate     String?
+  previousRating     String?
+  coachingDay        String?
+  coachingTime       String?
+  lastCoachingDate   String?
+  providedBy         String?
+  allHandsAttendance String?
+  hireDate           String?
+  mbrLink            String?
+  coachingPlanLink   String?
+  erDocLink          String?
+  active             Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  qaEntries    QAEntry[]
+  coachingOpps CoachingOpp[]
+  callouts     Callout[]
+  growthConvos GrowthConvo[]
+  adHocNotes    AdHocNote[]
+  coachingNotes CoachingNote[]
+}
+
+model QAEntry {
+  id           String   @id @default(cuid())
+  agentId      String
+  agent        Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  month        String
+  year         Int
+  reviewer     String
+  score        Float?
+  additionalQA String?
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model CoachingOpp {
+  id         String   @id @default(cuid())
+  agentId    String
+  agent      Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  caseNumber String
+  date       String?
+  notes      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Callout {
+  id         String   @id @default(cuid())
+  agentId    String
+  agent      Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  date       String
+  dayOfWeek  String?
+  type       String
+  note       String?
+  recordedBy String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model GrowthConvo {
+  id                  String   @id @default(cuid())
+  agentId             String
+  agent               Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  quarter             String
+  year                Int
+  rating              String?
+  bonusAdjWarning     String?
+  review              String?
+  deliveredViaLattice Boolean  @default(false)
+  dateAccepted        String?
+  dateDelivered       String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model AdHocNote {
+  id        String   @id @default(cuid())
+  agentId   String
+  agent     Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  note      String
+  date      String?
+  createdBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CoachingNote {
+  id        String   @id @default(cuid())
+  agentId   String
+  agent     Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  content   String
+  tags      String   @default("[]")
+  createdBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
