@@ -99,7 +99,7 @@ export default function QAPage() {
               <tr><td colSpan={8} className="px-4 py-8 text-center text-gray-400">No QA entries found.</td></tr>
             )}
             {entries.map(e => (
-              <tr key={e.id} className="hover:bg-green-50">
+              <tr key={e.id} className="hover:bg-green-50/40">
                 <td className="px-3 py-2 font-medium">{e.agent.name}</td>
                 <td className="px-3 py-2 text-gray-600">{e.month}</td>
                 <td className="px-3 py-2 text-gray-600">{e.year}</td>
@@ -108,7 +108,7 @@ export default function QAPage() {
                 <td className="px-3 py-2 text-gray-600">{e.additionalQA || '—'}</td>
                 <td className="px-3 py-2 text-gray-600 max-w-xs truncate">{e.notes || '—'}</td>
                 <td className="px-3 py-2 whitespace-nowrap">
-                  <button onClick={() => openEdit(e)} className="text-xs text-green-600 hover:underline mr-2">Edit</button>
+                  <button onClick={() => openEdit(e)} className="text-xs text-green-800 hover:underline mr-2">Edit</button>
                   <button onClick={() => remove(e.id)} className="text-xs text-red-500 hover:underline">Delete</button>
                 </td>
               </tr>

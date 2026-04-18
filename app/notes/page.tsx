@@ -81,7 +81,7 @@ export default function NotesPage() {
                 <p className="text-sm text-gray-700 whitespace-pre-wrap">{n.note}</p>
               </div>
               <div className="flex gap-2 shrink-0">
-                <button onClick={() => openEdit(n)} className="text-xs text-green-600 hover:underline">Edit</button>
+                <button onClick={() => openEdit(n)} className="text-xs text-green-800 hover:underline">Edit</button>
                 <button onClick={() => remove(n.id)} className="text-xs text-red-500 hover:underline">Delete</button>
               </div>
             </div>

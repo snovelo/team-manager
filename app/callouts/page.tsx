@@ -89,7 +89,7 @@ export default function CalloutsPage() {
               <tr><td colSpan={7} className="px-4 py-8 text-center text-gray-400">No callout entries found.</td></tr>
             )}
             {callouts.map(c => (
-              <tr key={c.id} className="hover:bg-green-50">
+              <tr key={c.id} className="hover:bg-green-50/40">
                 <td className="px-3 py-2 font-medium whitespace-nowrap">{c.agent.name}</td>
                 <td className="px-3 py-2 text-gray-600 whitespace-nowrap">{c.date}</td>
                 <td className="px-3 py-2 text-gray-600 whitespace-nowrap">{c.dayOfWeek || '—'}</td>
@@ -97,7 +97,7 @@ export default function CalloutsPage() {
                 <td className="px-3 py-2 text-gray-600 max-w-xs truncate">{c.note || '—'}</td>
                 <td className="px-3 py-2 text-gray-600 whitespace-nowrap">{c.recordedBy || '—'}</td>
                 <td className="px-3 py-2 whitespace-nowrap">
-                  <button onClick={() => openEdit(c)} className="text-xs text-green-600 hover:underline mr-2">Edit</button>
+                  <button onClick={() => openEdit(c)} className="text-xs text-green-800 hover:underline mr-2">Edit</button>
                   <button onClick={() => remove(c.id)} className="text-xs text-red-500 hover:underline">Delete</button>
                 </td>
               </tr>

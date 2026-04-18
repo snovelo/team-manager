@@ -93,7 +93,7 @@ export default function GrowthPage() {
               <tr><td colSpan={10} className="px-4 py-8 text-center text-gray-400">No growth convos found.</td></tr>
             )}
             {convos.map(c => (
-              <tr key={c.id} className="hover:bg-green-50">
+              <tr key={c.id} className="hover:bg-green-50/40">
                 <td className="px-3 py-2 font-medium whitespace-nowrap">{c.agent.name}</td>
                 <td className="px-3 py-2 text-gray-600">{c.quarter}</td>
                 <td className="px-3 py-2 text-gray-600">{c.year}</td>
@@ -106,7 +106,7 @@ export default function GrowthPage() {
                 <td className="px-3 py-2 text-gray-600 whitespace-nowrap">{c.dateDelivered || '—'}</td>
                 <td className="px-3 py-2 text-gray-500 max-w-xs truncate text-xs">{c.review ? c.review.slice(0, 80) + (c.review.length > 80 ? '...' : '') : '—'}</td>
                 <td className="px-3 py-2 whitespace-nowrap">
-                  <button onClick={() => openEdit(c)} className="text-xs text-green-600 hover:underline mr-2">Edit</button>
+                  <button onClick={() => openEdit(c)} className="text-xs text-green-800 hover:underline mr-2">Edit</button>
                   <button onClick={() => remove(c.id)} className="text-xs text-red-500 hover:underline">Delete</button>
                 </td>
               </tr>
